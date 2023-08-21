@@ -1,5 +1,11 @@
 class User < ApplicationRecord
 
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :age, numericality: { greater_than: 0 }
+
+  before_save :capitalize_name
+
   private
 
   def capitalize_name
